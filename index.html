@@ -39,8 +39,20 @@
     <h2 class="seccion-titulo">🐾 Mascotas en adopción</h2>
     <p class="seccion-sub">Cada uno de ellos tiene mucho amor para dar. ¿Cuál robará tu corazón?</p>
 
-    <div class="grid">
-      <div class="card">
+    <!-- FILTROS -->
+    <div class="filtros">
+      <button class="btn-filtro activo" data-filtro="todos">🐾 Todos</button>
+      <button class="btn-filtro" data-filtro="perro">🐶 Perros</button>
+      <button class="btn-filtro" data-filtro="gato">🐱 Gatos</button>
+      <button class="btn-filtro" data-filtro="otro">🐰 Otros</button>
+    </div>
+
+    <p class="sin-resultados" id="sinResultados" style="display:none;">
+      😔 No hay mascotas en esta categoría por ahora. ¡Vuelve pronto!
+    </p>
+
+    <div class="grid" id="gridMascotas">
+      <div class="card" data-tipo="perro">
         <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=480&q=80" alt="Luna, perrita golden" />
         <div class="card-body">
           <h3>🐕 Luna</h3>
@@ -50,7 +62,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-tipo="gato">
         <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=480&q=80" alt="Milo, gatito naranja" />
         <div class="card-body">
           <h3>🐈 Milo</h3>
@@ -60,7 +72,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-tipo="perro">
         <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=480&q=80" alt="Coco, perrito pequeño" />
         <div class="card-body">
           <h3>🐶 Coco</h3>
@@ -70,13 +82,33 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-tipo="gato">
         <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=480&q=80" alt="Nina, gatita blanca" />
         <div class="card-body">
           <h3>🐱 Nina</h3>
           <p class="edad">8 meses · Hembra</p>
           <p class="desc">Dulce, tierna y muy juguetona. Adora las caricias y siempre busca compañía para acurrucarse.</p>
           <button class="btn-adoptar" onclick="quieroAdoptar('Nina 🐱')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+
+      <div class="card" data-tipo="otro">
+        <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=480&q=80" alt="Boni, conejita blanca" />
+        <div class="card-body">
+          <h3>🐰 Boni</h3>
+          <p class="edad">1 año · Hembra</p>
+          <p class="desc">Suavecita y muy curiosa. Le encanta explorar, comer zanahorias y recibir mimos con mucha paciencia.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Boni 🐰')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+
+      <div class="card" data-tipo="otro">
+        <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=480&q=80" alt="Pipo, loro verde" />
+        <div class="card-body">
+          <h3>🦜 Pipo</h3>
+          <p class="edad">3 años · Macho</p>
+          <p class="desc">Alegre y parlanchín. Ya sabe decir "hola" y "beso". Llena de color y vida cualquier hogar.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Pipo 🦜')">Quiero adoptar 💕</button>
         </div>
       </div>
     </div>
