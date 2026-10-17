@@ -152,6 +152,32 @@
       });
     });
 
+    // FILTROS
+    document.querySelectorAll('.btn-filtro').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        // Marcar botón activo
+        document.querySelectorAll('.btn-filtro').forEach(function (b) {
+          b.classList.remove('activo');
+        });
+        this.classList.add('activo');
+
+        var filtro = this.getAttribute('data-filtro');
+        var cards = document.querySelectorAll('#gridMascotas .card');
+        var visibles = 0;
+
+        cards.forEach(function (card) {
+          if (filtro === 'todos' || card.getAttribute('data-tipo') === filtro) {
+            card.style.display = '';
+            visibles++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        document.getElementById('sinResultados').style.display = visibles === 0 ? 'block' : 'none';
+      });
+    });
+
     function quieroAdoptar(nombre) {
       document.getElementById('modalTitulo').textContent = '¡Excelente elección! 🎉';
       document.getElementById('modalTexto').textContent =
