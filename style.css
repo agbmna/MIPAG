@@ -2,20 +2,20 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --rosa: #f8a4b8;
-      --rosa-claro: #fce4ec;
+      --rosa: #2f575a;
+      --rosa-claro: #e4f5fc;
       --beige: #fff5ee;
       --blanco: #ffffff;
       --texto: #5a3e4b;
       --texto-claro: #8b6b7b;
-      --acento: #e87fa1;
+      --acento: #3c5f6d;
       --sombra: rgba(200, 140, 160, 0.25);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Nunito', sans-serif;
       background: var(--beige);
       color: var(--texto);
       line-height: 1.6;
@@ -147,7 +147,7 @@
       border: 2px solid var(--rosa);
       padding: 10px 24px;
       border-radius: 50px;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Nunito', sans-serif;
       font-weight: 700;
       font-size: .95rem;
       cursor: pointer;
@@ -232,15 +232,61 @@
       border: none;
       padding: 12px;
       border-radius: 50px;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Nunito', sans-serif;
       font-weight: 700;
       font-size: .95rem;
       cursor: pointer;
       transition: background .3s, transform .2s;
+      width: 100%;
+      margin-top: 12px;
     }
     .btn-adoptar:hover {
       background: var(--acento);
       transform: scale(1.04);
+    }
+
+    /* BOTÓN MÁS INFO */
+    .btn-mas-info {
+      background: transparent;
+      color: var(--acento);
+      border: 2px solid var(--acento);
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: background .25s, color .25s, transform .2s;
+      align-self: flex-start;
+    }
+    .btn-mas-info:hover {
+      background: var(--acento);
+      color: var(--blanco);
+      transform: translateY(-2px);
+    }
+
+    /* PANEL HISTORIA */
+    .historia {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s ease, opacity .35s ease, padding .35s ease;
+      opacity: 0;
+      background: var(--rosa-claro);
+      border-radius: 14px;
+      padding: 0 16px;
+      margin-top: 0;
+    }
+    .historia.visible {
+      max-height: 400px;
+      opacity: 1;
+      padding: 16px;
+      margin-top: 12px;
+    }
+    .historia p {
+      font-size: .9rem;
+      color: var(--texto);
+      line-height: 1.65;
+      margin-bottom: 0;
     }
 
     .contacto {
@@ -326,7 +372,7 @@
       border: none;
       padding: 12px 32px;
       border-radius: 50px;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Nunito', sans-serif;
       font-weight: 700;
       font-size: .95rem;
       cursor: pointer;
