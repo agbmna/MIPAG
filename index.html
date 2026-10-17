@@ -6,7 +6,7 @@
   <title>Huellitas de Amor 🐾</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -52,65 +52,97 @@
     </p>
 
     <div class="grid" id="gridMascotas">
+
+      <!-- LUNA -->
       <div class="card" data-tipo="perro">
         <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=480&q=80" alt="Luna, perrita golden" />
         <div class="card-body">
           <h3>🐕 Luna</h3>
           <p class="edad">2 años · Hembra</p>
           <p class="desc">Juguetona, cariñosa y llena de energía. Le encanta correr en el parque y dar abrazos.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Luna 🐕')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Luna llegó al refugio cuando tenía apenas unos meses. La encontraron sola en un parque, asustada pero con la cola siempre lista para moverse. Con mucho amor y paciencia, se convirtió en la más extrovertida del lugar. Sueña con una familia activa que la lleve a aventuras, la abrace fuerte y le dé el hogar que nunca tuvo. ¿Podrías ser tú?</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Luna 🐕')">Quiero adoptar a Luna 💕</button>
+          </div>
         </div>
       </div>
 
+      <!-- MILO -->
       <div class="card" data-tipo="gato">
         <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=480&q=80" alt="Milo, gatito naranja" />
         <div class="card-body">
           <h3>🐈 Milo</h3>
           <p class="edad">1 año · Macho</p>
           <p class="desc">Tranquilo, ronroneador y muy curioso. Le encanta dormir en lugares cálidos y jugar con pelotas.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Milo 🐈')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Milo fue rescatado de una caja en plena lluvia cuando tenía dos semanas. Las voluntarias del refugio lo criaron con biberón. Hoy es un gato tranquilo y agradecido que ama las siestas largas y los rincones soleados. Busca un hogar tranquilo donde pueda ronronear a su lado cada noche.</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Milo 🐈')">Quiero adoptar a Milo 💕</button>
+          </div>
         </div>
       </div>
 
+      <!-- COCO -->
       <div class="card" data-tipo="perro">
         <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=480&q=80" alt="Coco, perrito pequeño" />
         <div class="card-body">
           <h3>🐶 Coco</h3>
           <p class="edad">3 años · Macho</p>
           <p class="desc">Pequeñito pero valiente. Es súper leal, le encanta que lo consientan y seguirte a todas partes.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Coco 🐶')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Coco llegó al refugio después de ser abandonado frente a una tienda. A pesar de todo, nunca perdió su espíritu alegre. Es el tipo de perro que te sigue de habitación en habitación y se queda dormido encima de tus pies. Solo necesita a alguien que lo quiera de vuelta con la misma intensidad.</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Coco 🐶')">Quiero adoptar a Coco 💕</button>
+          </div>
         </div>
       </div>
 
+      <!-- NINA -->
       <div class="card" data-tipo="gato">
         <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=480&q=80" alt="Nina, gatita blanca" />
         <div class="card-body">
           <h3>🐱 Nina</h3>
           <p class="edad">8 meses · Hembra</p>
           <p class="desc">Dulce, tierna y muy juguetona. Adora las caricias y siempre busca compañía para acurrucarse.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Nina 🐱')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Nina nació en el refugio y creció rodeada de cuidados. Desde pequeña mostró un carácter dulcísimo: siempre busca una mano que la acaricie y un regazo donde acurrucarse. Le encantan las mantas suaves y los juguetes con plumas. Sería perfecta para un hogar tranquilo que le dé todo el amor que merece.</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Nina 🐱')">Quiero adoptar a Nina 💕</button>
+          </div>
         </div>
       </div>
 
+      <!-- BONI -->
       <div class="card" data-tipo="otro">
         <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=480&q=80" alt="Boni, conejita blanca" />
         <div class="card-body">
           <h3>🐰 Boni</h3>
           <p class="edad">1 año · Hembra</p>
           <p class="desc">Suavecita y muy curiosa. Le encanta explorar, comer zanahorias y recibir mimos con mucha paciencia.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Boni 🐰')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Boni fue entregada al refugio cuando su dueño anterior se mudó. Es una conejita llena de vida: salta, explora y no para quieta. Con el tiempo aprendió a confiar en las personas y ahora adora que le rasquen detrás de las orejas. Necesita espacio para moverse y una familia paciente que la conozca poco a poco.</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Boni 🐰')">Quiero adoptar a Boni 💕</button>
+          </div>
         </div>
       </div>
 
+      <!-- PIPO -->
       <div class="card" data-tipo="otro">
         <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=480&q=80" alt="Pipo, loro verde" />
         <div class="card-body">
           <h3>🦜 Pipo</h3>
           <p class="edad">3 años · Macho</p>
           <p class="desc">Alegre y parlanchín. Ya sabe decir "hola" y "beso". Llena de color y vida cualquier hogar.</p>
-          <button class="btn-adoptar" onclick="quieroAdoptar('Pipo 🦜')">Quiero adoptar 💕</button>
+          <button class="btn-mas-info" onclick="toggleInfo(this)">Más info 🐾</button>
+          <div class="historia">
+            <p>Pipo llegó al refugio desde una tienda que cerró. Aunque al principio estaba algo asustado, rápidamente mostró su verdadera personalidad: curiosa, divertida y llena de energía. Ya imita risas y silba canciones. Necesita un hogar donde haya movimiento, conversación y mucho cariño para seguir aprendiendo.</p>
+            <button class="btn-adoptar" onclick="quieroAdoptar('Pipo 🦜')">Quiero adoptar a Pipo 💕</button>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -151,6 +183,14 @@
         document.getElementById('navLinks').classList.remove('open');
       });
     });
+
+    // MÁS INFO — expande/contrae la historia de cada mascota
+    function toggleInfo(btn) {
+      var historia = btn.nextElementSibling;
+      var abierta = historia.classList.contains('visible');
+      historia.classList.toggle('visible', !abierta);
+      btn.textContent = abierta ? 'Más info 🐾' : 'Menos info ✖';
+    }
 
     // FILTROS
     document.querySelectorAll('.btn-filtro').forEach(function (btn) {
