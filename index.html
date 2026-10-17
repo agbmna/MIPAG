@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huellitas de Amor 🐾</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <nav class="navbar">
+      <a href="#inicio" class="logo">🐾 Huellitas de Amor</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#mascotas">Mascotas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / INICIO -->
+  <section class="hero" id="inicio">
+    <span class="hero-emoji">🐶🐱</span>
+    <h1>Encuentra a tu mejor amigo</h1>
+    <p>
+      Miles de peluditos esperan por un hogar lleno de amor. Abre tu corazón y dale a una mascota la oportunidad de hacerte feliz. ¡Adopta, cambia una vida!
+    </p>
+    <a href="#mascotas" class="btn-hero">Ver mascotas disponibles</a>
+  </section>
+
+  <!-- MASCOTAS EN ADOPCIÓN -->
+  <section class="seccion" id="mascotas">
+    <h2 class="seccion-titulo">🐾 Mascotas en adopción</h2>
+    <p class="seccion-sub">Cada uno de ellos tiene mucho amor para dar. ¿Cuál robará tu corazón?</p>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=480&q=80" alt="Luna, perrita golden" />
+        <div class="card-body">
+          <h3>🐕 Luna</h3>
+          <p class="edad">2 años · Hembra</p>
+          <p class="desc">Juguetona, cariñosa y llena de energía. Le encanta correr en el parque y dar abrazos.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Luna 🐕')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=480&q=80" alt="Milo, gatito naranja" />
+        <div class="card-body">
+          <h3>🐈 Milo</h3>
+          <p class="edad">1 año · Macho</p>
+          <p class="desc">Tranquilo, ronroneador y muy curioso. Le encanta dormir en lugares cálidos y jugar con pelotas.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Milo 🐈')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=480&q=80" alt="Coco, perrito pequeño" />
+        <div class="card-body">
+          <h3>🐶 Coco</h3>
+          <p class="edad">3 años · Macho</p>
+          <p class="desc">Pequeñito pero valiente. Es súper leal, le encanta que lo consientan y seguirte a todas partes.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Coco 🐶')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=480&q=80" alt="Nina, gatita blanca" />
+        <div class="card-body">
+          <h3>🐱 Nina</h3>
+          <p class="edad">8 meses · Hembra</p>
+          <p class="desc">Dulce, tierna y muy juguetona. Adora las caricias y siempre busca compañía para acurrucarse.</p>
+          <button class="btn-adoptar" onclick="quieroAdoptar('Nina 🐱')">Quiero adoptar 💕</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <span class="emoji-grande">💖</span>
+    <h2>Dales una segunda oportunidad</h2>
+    <p>Cada mascota merece un hogar lleno de amor. No compres, ¡adopta! Tu nuevo mejor amigo te está esperando.</p>
+    <p><strong>¡Adopta, no compres!</strong></p>
+    <div class="contacto-info">
+      📧 contacto@huellitasdeamor.org · 📞 (+57) 300 123 4567
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Huellitas de Amor 🐾 — Hecho con mucho 💕
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <span class="emoji-modal">🎉</span>
+      <h3 id="modalTitulo">¡Genial!</h3>
+      <p id="modalTexto"></p>
+      <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    function quieroAdoptar(nombre) {
+      document.getElementById('modalTitulo').textContent = '¡Excelente elección! 🎉';
+      document.getElementById('modalTexto').textContent =
+        '¡Estás interesado/a en adoptar a ' + nombre + '! Nos pondremos en contacto contigo muy pronto para comenzar el proceso de adopción. ¡Gracias por darle un hogar lleno de amor!';
+      document.getElementById('modal').classList.add('active');
+    }
+
+    function cerrarModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) cerrarModal();
+    });
+  </script>
+
+</body>
+</html>
