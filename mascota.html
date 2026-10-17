@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huellitas de Amor 🐾</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">🐾 Huellitas de Amor</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#mascotas">Mascotas</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PÁGINA DE DETALLE -->
+  <main class="detalle-wrap" id="detallePagina">
+    <!-- Se genera con JavaScript -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Huellitas de Amor 🐾 — Hecho con mucho 💕
+  </footer>
+
+  <!-- MODAL ADOPCIÓN -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <span class="emoji-modal">🎉</span>
+      <h3 id="modalTitulo">¡Genial!</h3>
+      <p id="modalTexto"></p>
+      <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // ── Base de datos de mascotas ──────────────────────────────────────────────
+    var mascotas = {
+      luna: {
+        nombre: 'Luna',
+        emoji: '🐕',
+        tipo: 'Perro',
+        edad: '2 años',
+        sexo: 'Hembra',
+        foto: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=85',
+        alt: 'Luna, perrita golden',
+        resumen: 'Juguetona, cariñosa y llena de energía.',
+        personalidad: [
+          '🏃 Activa y llena de energía — necesita paseos largos y juego diario.',
+          '🤗 Muy afectuosa — da besos y abrazos sin pedirlos.',
+          '🐾 Sociable — se lleva bien con personas de todas las edades.',
+          '🎾 Le encanta buscar pelotas y correr en espacios abiertos.'
+        ],
+        historia: 'Luna llegó al refugio cuando tenía apenas unos meses de vida. La encontraron sola en un parque de la ciudad, asustada y hambrienta, pero con la colita siempre lista para moverse. Nadie sabe exactamente de dónde venía, pero desde el primer día dejó claro que quería dar amor. Con paciencia y mimos se fue convirtiendo poco a poco en la más extrovertida del refugio. Hoy, más de un año después, sigue esperando a esa familia que le dé el hogar que nunca tuvo.',
+        cuidados: 'Luna necesita una familia activa que la saque a pasear al menos dos veces al día. Se adapta muy bien a casas con jardín, aunque también puede vivir en apartamento si tiene actividad suficiente. No le gusta quedarse sola por períodos muy largos. Está al día con sus vacunas y esterilizada.',
+        familiaIdeal: 'Familia activa, con o sin niños. Personas que disfruten del aire libre. Puede convivir con otros perros si hay una presentación adecuada.'
+      },
+
+      milo: {
+        nombre: 'Milo',
+        emoji: '🐈',
+        tipo: 'Gato',
+        edad: '1 año',
+        sexo: 'Macho',
+        foto: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=900&q=85',
+        alt: 'Milo, gatito naranja',
+        resumen: 'Tranquilo, ronroneador y muy curioso.',
+        personalidad: [
+          '😴 Le encanta dormir en rincones soleados y lugares cálidos.',
+          '🔔 Ronronea fuerte cuando está contento — es su forma de abrazar.',
+          '🧶 Juguetón con pelotas y juguetes de tela.',
+          '🪟 Curioso por naturaleza — siempre asomado a la ventana.'
+        ],
+        historia: 'Milo fue rescatado de una caja de cartón mojada en plena lluvia cuando tenía apenas dos semanas. Las voluntarias del refugio lo alimentaron con biberón cada pocas horas durante semanas. Ese comienzo difícil lo hizo agradecido y tranquilo. Hoy es un gato equilibrado que ama la calma, las caricias lentas y los atardeceres desde la ventana.',
+        cuidados: 'Milo es un gato de interior. Necesita espacio para explorar, rascador y juguetes que estimulen su curiosidad. Come bien, no tiene problemas de salud y está castrado y vacunado. Prefiere hogares sin mucho ruido.',
+        familiaIdeal: 'Personas tranquilas o parejas. Puede vivir con otros gatos de carácter similar. No es recomendable con perros muy activos o niños muy pequeños.'
+      },
+
+      coco: {
+        nombre: 'Coco',
+        emoji: '🐶',
+        tipo: 'Perro',
+        edad: '3 años',
+        sexo: 'Macho',
+        foto: 'https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=900&q=85',
+        alt: 'Coco, perrito pequeño',
+        resumen: 'Pequeñito pero con un corazón enorme.',
+        personalidad: [
+          '💛 Leal al 100% — te sigue a todas partes sin excepción.',
+          '🛋️ Adora los mimos y acurrucarse en el sofá.',
+          '🐾 Obediente y fácil de entrenar.',
+          '🔕 Tranquilo en casa — no ladra sin motivo.'
+        ],
+        historia: 'Coco fue encontrado amarrado frente a una tienda con una nota que decía "no lo podemos cuidar". A pesar de ese inicio tan triste, nunca perdió su espíritu alegre. En el refugio se hizo querer por todos desde el primer día. Es el tipo de perro que te mira a los ojos y te hace saber que él también te eligió a ti.',
+        cuidados: 'Al ser de tamaño pequeño, se adapta muy bien a apartamentos. Solo necesita dos paseos cortos al día y mucho contacto humano. Está vacunado, desparasitado y castrado. No le gusta el frío, así que en invierno agradece una mantita.',
+        familiaIdeal: 'Cualquier tipo de hogar, incluso apartamentos pequeños. Excelente con personas mayores y niños tranquilos. Prefiere no estar solo más de 6 horas.'
+      },
+
+      nina: {
+        nombre: 'Nina',
+        emoji: '🐱',
+        tipo: 'Gato',
+        edad: '8 meses',
+        sexo: 'Hembra',
+        foto: 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=900&q=85',
+        alt: 'Nina, gatita blanca',
+        resumen: 'Dulce, tierna y siempre lista para acurrucarse.',
+        personalidad: [
+          '🌸 Muy cariñosa — busca activamente el contacto humano.',
+          '🧸 Le encantan los juguetes con plumas y las pelotas suaves.',
+          '🤫 De carácter sereno — raramente maúlla sin razón.',
+          '🛏️ Su lugar favorito es cualquier rincón suave y cálido.'
+        ],
+        historia: 'Nina nació en el propio refugio de una gata que fue rescatada embarazada. Creció entre voluntarias y cuidadores que la llenaron de amor desde el primer día. Ese origen privilegiado le dio un carácter dulcísimo y una confianza total en las personas. Ahora que ya es adulta, busca un hogar definitivo donde pueda seguir dando y recibiendo todo ese amor.',
+        cuidados: 'Nina es perfecta para interiores. Está esterilizada y vacunada. Le gusta tener juguetes a disposición y un rascador. No requiere cuidados especiales. Lo que más necesita es presencia y cariño.',
+        familiaIdeal: 'Hogares tranquilos, personas que pasen tiempo en casa. Puede convivir bien con otros gatos si la presentación es gradual. No recomendada con perros grandes.'
+      },
+
+      boni: {
+        nombre: 'Boni',
+        emoji: '🐰',
+        tipo: 'Conejo',
+        edad: '1 año',
+        sexo: 'Hembra',
+        foto: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=900&q=85',
+        alt: 'Boni, conejita blanca',
+        resumen: 'Curiosa, activa y llena de sorpresas.',
+        personalidad: [
+          '🥕 Ama las zanahorias, el cilantro y explorar nuevos espacios.',
+          '👂 Le encantan los rasquidos detrás de las orejas.',
+          '🌀 Activa y juguetona — necesita tiempo fuera de su jaula.',
+          '🐾 Con tiempo y paciencia, aprende a conocer y confiar en su familia.'
+        ],
+        historia: 'Boni llegó al refugio cuando su dueño anterior se mudó a otro país y no pudo llevarla. Al principio estaba algo retraída, pero con paciencia y rutina fue mostrando su verdadera personalidad: curiosa, vivaz y llena de energía. Hoy salta, explora y ya reconoce la voz de las cuidadoras que la alimentan cada día.',
+        cuidados: 'Boni necesita una jaula amplia, salidas diarias para explorar y una dieta basada en heno, verduras frescas y pellets. Está esterilizada. Requiere una familia que entienda que los conejos son animales sociales que necesitan interacción y espacio.',
+        familiaIdeal: 'Personas responsables, con espacio en casa. Ideal para familias con niños mayores de 8 años que sepan manipularla con delicadeza. No recomendada con perros o gatos sin supervisión.'
+      },
+
+      pipo: {
+        nombre: 'Pipo',
+        emoji: '🦜',
+        tipo: 'Loro',
+        edad: '3 años',
+        sexo: 'Macho',
+        foto: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=900&q=85',
+        alt: 'Pipo, loro verde',
+        resumen: 'Alegre, curioso y con mucho que decir.',
+        personalidad: [
+          '🗣️ Ya dice "hola", "beso" y silba melodías.',
+          '🎨 Le encanta explorar objetos nuevos y colores brillantes.',
+          '🤸 Muy activo — necesita volar y jugar fuera de la jaula cada día.',
+          '🎵 Aprende rápido — disfruta de la interacción y los juegos.'
+        ],
+        historia: 'Pipo vivía en una tienda de mascotas que tuvo que cerrar. Cuando llegó al refugio estaba un poco asustado por el cambio de ambiente, pero en pocas semanas ya había conquistado a todos con su personalidad vibrante. Imita risas, silba canciones y saluda a cada persona que se acerca. Solo le falta un hogar con vida, movimiento y alguien que le hable.',
+        cuidados: 'Pipo necesita una jaula grande, salidas diarias supervisadas para volar, y mucha estimulación mental: juguetes, interacción y conversación. Su dieta debe incluir semillas, frutas y verduras frescas. Requiere atención veterinaria especializada en aves.',
+        familiaIdeal: 'Personas en casa la mayor parte del día. Hogares con ambiente animado. No recomendado para hogares con bebés o personas muy sensibles al ruido. Requiere compromiso a largo plazo (los loros viven muchos años).'
+      }
+    };
+
+    // ── Renderizar la página ──────────────────────────────────────────────────
+    var params = new URLSearchParams(window.location.search);
+    var id = (params.get('id') || '').toLowerCase();
+    var m = mascotas[id];
+    var contenedor = document.getElementById('detallePagina');
+
+    if (!m) {
+      contenedor.innerHTML =
+        '<div class="detalle-error">' +
+          '<span style="font-size:4rem">😔</span>' +
+          '<h2>Mascota no encontrada</h2>' +
+          '<p>No encontramos la información que buscas.</p>' +
+          '<a href="index.html#mascotas" class="btn-volver">← Volver al catálogo</a>' +
+        '</div>';
+    } else {
+      document.title = m.nombre + ' · Huellitas de Amor 🐾';
+
+      var personalidadHTML = m.personalidad.map(function(p) {
+        return '<li>' + p + '</li>';
+      }).join('');
+
+      contenedor.innerHTML =
+        '<div class="detalle-container">' +
+
+          '<a href="index.html#mascotas" class="btn-volver">← Volver a las mascotas</a>' +
+
+          '<div class="detalle-hero">' +
+            '<div class="detalle-foto-wrap">' +
+              '<img src="' + m.foto + '" alt="' + m.alt + '" class="detalle-foto" />' +
+            '</div>' +
+            '<div class="detalle-info">' +
+              '<p class="detalle-tipo">' + m.tipo + '</p>' +
+              '<h1 class="detalle-nombre">' + m.emoji + ' ' + m.nombre + '</h1>' +
+              '<div class="detalle-badges">' +
+                '<span class="badge">🗓️ ' + m.edad + '</span>' +
+                '<span class="badge">⚥ ' + m.sexo + '</span>' +
+              '</div>' +
+              '<p class="detalle-resumen">' + m.resumen + '</p>' +
+              '<button class="btn-adoptar-grande" onclick="quieroAdoptar(\'' + m.nombre + ' ' + m.emoji + '\')">' +
+                'Quiero adoptar a ' + m.nombre + ' 💕' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="detalle-secciones">' +
+
+            '<div class="detalle-bloque">' +
+              '<h2>✨ Personalidad y gustos</h2>' +
+              '<ul class="detalle-lista">' + personalidadHTML + '</ul>' +
+            '</div>' +
+
+            '<div class="detalle-bloque">' +
+              '<h2>📖 Su historia</h2>' +
+              '<p>' + m.historia + '</p>' +
+            '</div>' +
+
+            '<div class="detalle-bloque">' +
+              '<h2>🏠 Cuidados y tipo de familia ideal</h2>' +
+              '<p>' + m.cuidados + '</p>' +
+              '<div class="detalle-familia">' +
+                '<span>💛</span>' +
+                '<p>' + m.familiaIdeal + '</p>' +
+              '</div>' +
+            '</div>' +
+
+          '</div>' +
+
+          '<div class="detalle-cta">' +
+            '<p>¿Ya tomaste la decisión?</p>' +
+            '<button class="btn-adoptar-grande" onclick="quieroAdoptar(\'' + m.nombre + ' ' + m.emoji + '\')">' +
+              'Quiero adoptar a ' + m.nombre + ' 💕' +
+            '</button>' +
+          '</div>' +
+
+        '</div>';
+    }
+
+    // ── Navbar toggle ─────────────────────────────────────────────────────────
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ── Modal adopción ────────────────────────────────────────────────────────
+    function quieroAdoptar(nombre) {
+      document.getElementById('modalTitulo').textContent = '¡Excelente elección! 🎉';
+      document.getElementById('modalTexto').textContent =
+        '¡Estás interesado/a en adoptar a ' + nombre + '! Nos pondremos en contacto contigo muy pronto para comenzar el proceso de adopción. ¡Gracias por darle un hogar lleno de amor!';
+      document.getElementById('modal').classList.add('active');
+    }
+
+    function cerrarModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) cerrarModal();
+    });
+  </script>
+
+</body>
+</html>
